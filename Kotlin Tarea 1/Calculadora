@@ -1,0 +1,53 @@
+//Calculadora basica, calculadora con las operaciones basicas que le pide al usuario numeros para poder continuar
+//Joaquin Torres Flores, 21/03/2024(algunos errores en 2 operaciones), 22/03/2024(solucion de errores).
+fun calculadora(){
+    println("¿Con cuantos numeros va a realizar su operacion?")
+    var cantidad = readln()!!.toInt(); var c =0
+    println("1. Suma ");println("2. Resta");println("3. Multiplicación");println("4. Dividir");println("5. Salir")
+    var asigno = readln()!!.toInt()
+    when(asigno ){
+        1 -> {println( "Escogió sumar");println("Ingrese los  números")
+            for (a in 1 .. cantidad){
+                var num = readln()!!.toInt()
+                c = num + c
+            }
+            println("El resultado es: $c")
+        }
+        2 -> {println( "Escogió restar");println("Ingrese los números")
+            var c = readLine()!!.toInt()
+            for (a in 2 .. cantidad){
+                var num = readln()!!.toInt()
+                c = c- num
+            }
+            println("El resultado es: $c")
+        }
+        3 -> {println( "Escogió multiplicar");println("Ingrese los números")
+            c=1
+            for (a in 1 .. cantidad){
+                var num = readln()!!.toInt()
+
+                c = c * num
+            }
+            println("El resultado es: $c")
+        }
+        4 -> {
+            println("Escogió dividir");println("Ingrese los números")
+            var c = readLine()!!.toDouble()
+            for (a in 2 .. cantidad){
+                var num = readln()!!.toInt()
+                if (num != 0) {
+                    c /= num
+                } else {
+                    println("No se puede dividir por cero.")
+                    return
+                }
+            }
+            println("El resultado es: $c")
+        }
+        5 -> {println( "Ha salido")}
+        else ->  println("Esa no es una opccion")
+    }
+}
+fun main() {
+    calculadora()
+}
