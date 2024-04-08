@@ -1,0 +1,20 @@
+//EvaluaEmple, se evaluia el rendimiento y el salario mensual de un empleado de una empresa
+//Joaquin Torres Flores, 21/03/2024(inicio del codigo y finalizacion), 22/03/2024(ultima modificacion,le agregue los comentarios)
+fun revision (){
+    println("Ingrese puntuación evaluación")
+    var puntuacion  = readln()!!.toInt()
+    println("Ingrese salario mensual")
+    var salario = readln()!!.toInt()
+    if (0<= puntuacion && puntuacion <= 3){
+        println("Rendimiento inaceptable su salario es ${(puntuacion*salario)/10}")
+    }
+    else if (puntuacion <= 6){
+        println("Rendimiento aceptable su salario es ${(puntuacion*salario)/10}")
+    }
+    else {
+        println("Rendimiento meritorio su salario es ${(puntuacion*salario)/10}")
+    }
+}
+fun main() {
+    revision()
+}
