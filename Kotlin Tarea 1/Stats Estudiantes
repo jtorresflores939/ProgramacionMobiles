@@ -1,0 +1,24 @@
+//Stats Estudiantes, se pide ingresar el numero de estudiantes y luego se dice cual es la mayor edad y cual es la menor
+//Joaquin Torres Flores, 21/03/2024, 22/03/2024(Le agregue los comentarios que me faltaban)
+fun Stats(){
+    println("¿Cuantos alumnos hay en el salón?")
+    var menor = 10000
+    var mayor = -1
+    var alumnos = readln()!!.toInt()
+    println("Ingrese sus edades")
+    for ( a in 1 .. alumnos){
+        var edad = readln()!!.toInt()
+        if (edad <= menor){
+            mayor = edad
+        }
+        if (edad >= mayor){
+            menor = edad
+        }
+    }
+    println("Edad máxima: $mayor")
+    println("Edad mínima: $menor")
+
+}
+fun main() {
+    Stats()
+}
