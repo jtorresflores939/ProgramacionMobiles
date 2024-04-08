@@ -1,0 +1,28 @@
+class CuentaBancaria(private var saldo: Double, private val limiteRetiro: Double) {  //Joaquin Torres Flores Cuenta Bancaria
+    fun setSaldo(nuevoSaldo: Double) {
+        // El saldo debe de ser mayor o igual que sero, aunque si es 0 no serviria de mucho
+        if (nuevoSaldo >= 0) {
+            saldo = nuevoSaldo
+        } else {
+            println("Error: El saldo no puede ser negativo")
+        }
+    }
+    fun getSaldo(): Double {
+        return saldo
+    }
+    fun realizarRetiro(cantidad: Double) {
+        if (cantidad > 0 && cantidad <= saldo && cantidad <= limiteRetiro) {
+            saldo -= cantidad
+            println("El retiro de $cantidad fue exitoso Ahora tiene: $saldo")
+        } else {
+            println("Error cambie el monto o modifique el limite de retiro")
+        }
+    }
+}
+fun main() {
+    val cuenta = CuentaBancaria(6000.0, 1000.0) // primero va el saldo y luego el limite de retiro si se baja o sube dara otra respuesta
+    println("Saldo actual: ${cuenta.getSaldo()}")
+    cuenta.realizarRetiro(200.0)
+    cuenta.realizarRetiro(800.0)//los 3 dependen del limite de retiro
+    cuenta.realizarRetiro(2000.0)
+}
