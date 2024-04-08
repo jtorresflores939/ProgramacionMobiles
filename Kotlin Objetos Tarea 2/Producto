@@ -1,0 +1,17 @@
+// Joaquin Torres Flores Clase producto
+class Producto(private var precio: Double, private val descuento: Double) {
+
+    fun getPrecio(): Double {
+        return precio
+    }
+    fun setPrecio(nuevoPrecio: Double) {
+        precio = nuevoPrecio
+    }
+    fun calcularPrecioFinal(): Double {
+        return precio * (1 - descuento / 100)
+    }
+}
+fun main(){
+    val producto = Producto(214.0, 20.0)// se define el precio del producto y su descuento
+    println("El precio con descuento es ${producto.calcularPrecioFinal()}")
+   }
