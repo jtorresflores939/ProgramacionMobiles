@@ -1,0 +1,27 @@
+//AdivinarNumero, se le pide al usuario que diga un numero entre el 30 y el 1 para despues darle pistas de cual es hasta que lo descubra
+//Joaquin Torres Flores 19/03/2024(incompleto), ultima modificacion 22/03/2024
+fun adivinarNum(){
+    var num =1..30
+    var randum = num.random()
+    println("Intente adivinar el numero, solo de 1 hasta 30")
+    var a= 1
+    while (a < 6 ){
+        var jugador = readln()!!.toInt()
+        if (jugador == randum){
+            println("Gano")
+            a = a +10
+        }
+        else if ( jugador < randum){
+            println("El número es mayor")
+            a++
+        }
+        else if (randum  < jugador){
+            println("El número es menor")
+            a++
+        }
+    }
+    println("El número es $randum")
+}
+fun main() {
+    adivinarNum()
+}
