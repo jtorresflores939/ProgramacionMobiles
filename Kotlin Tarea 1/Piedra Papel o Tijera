@@ -1,0 +1,25 @@
+//PiedraPapelOTijera, se le pide al usuario que ingrese una de las 3 opciones para que luego el codigo de manera aleatoria le diga si
+//gano o perdio mostrandole el resultado que saco la maquina
+//Joaquin Torres Flores, 21/03/2024(inicio y finalizacion del codigo), 22/03/2024(le agregue los comentarios)
+
+fun PiedraPapeloTijera (){
+    var objetos = listOf("Piedra","Papel","Tijera")
+    var randomobj = objetos.random()
+    println("Piedra, Papel o Tijera")
+    var jugador = readln()
+    if (randomobj == jugador){
+        println(randomobj)
+        println("Empate")
+    }
+    else if (jugador == "Piedra" && randomobj=="Papel"||jugador == "Papel" && randomobj=="Tijera"||jugador == "Tijera" && randomobj=="Piedra"){
+        println(randomobj)
+        println("Perdio")
+    }
+    else{
+        println(randomobj)
+        println("Gano")
+    }
+}
+fun main() {
+    PiedraPapeloTijera()
+}
