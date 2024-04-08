@@ -1,0 +1,45 @@
+//Joaquin Torres Flores
+// Clase abstracta Shape
+abstract class Shape {
+    abstract fun area(): Double
+    abstract fun perimeter(): Double
+}
+// Subclase Cuadrado
+class Cuadrado(private val lado: Double) : Shape() {
+    override fun area(): Double {
+        return lado * lado //operacion matematica para saber el area del cuadrado
+    }
+    override fun perimeter(): Double {
+        return 4 * lado //operacion matematica para saber el perimetro del cuadrado
+    }
+}
+// Subclase Círculo
+class Circulo(private val radio: Double) : Shape() {
+    override fun area(): Double {
+        return 3.14 * radio * radio //operacion matematica para saber el area del circulo
+    }
+    override fun perimeter(): Double {
+        return 2 * 3.14 * radio //operacion matematica para saber el perimetro del circulo
+    }
+}
+// Subclase Rectángulo
+class Rectangulo(private val lado1: Double, private val lado2: Double) : Shape() {
+    override fun area(): Double {
+        return lado1 * lado2 //operacion matematica para saber el area del rectangulo
+    }
+
+    override fun perimeter(): Double {
+        return 2 * (lado1 + lado2) // operacion matemiatica para saber el perimetro de un rectangulo
+    }
+}
+fun main(){
+    // Pruebas para las figuras geométricas
+    val cuadrado = Cuadrado(15.0)
+    println("Área del cuadrado: ${cuadrado.area()}, Perímetro del cuadrado: ${cuadrado.perimeter()}")
+
+    val circulo = Circulo(15.53)
+    println("Área del círculo: ${circulo.area()}, Longitud del círculo: ${circulo.perimeter()}")
+
+    val rectangulo = Rectangulo(23.0, 155.0)
+    println("Área del rectángulo: ${rectangulo.area()}, Perímetro del rectángulo: ${rectangulo.perimeter()}")
+}
