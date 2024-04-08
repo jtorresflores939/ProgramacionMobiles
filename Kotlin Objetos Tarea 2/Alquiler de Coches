@@ -1,0 +1,63 @@
+//Joaquin Torres Flores
+//Alquiler de vehiculos
+interface VehiculoAlquilable {
+    fun alquilar()
+    fun devolver()
+}
+
+class Coche(val marca: String, val modelo: String, val placa: String) : VehiculoAlquilable {
+    var alquilado: Boolean = false
+
+    override fun alquilar() {
+        if (!alquilado) {
+            alquilado = true
+            println("Se ha alquilado el coche $marca $modelo con placa $placa")
+        } else {
+            println("El coche ya está alquilado")
+        }
+    }
+
+    override fun devolver() {
+        if (alquilado) {
+            alquilado = false
+            println("Se ha devuelto el coche $marca $modelo con placa $placa")
+        } else {
+            println("El coche no estaba alquilado")
+        }
+    }
+}
+
+class Moto(val marca: String, val modelo: String, val placa: String) : VehiculoAlquilable {
+    var alquilado: Boolean = false
+
+    override fun alquilar() {
+        if (!alquilado) {
+            alquilado = true
+            println("Se ha alquilado la moto $marca $modelo con placa $placa")
+        } else {
+            println("La moto ya está alquilada")
+        }
+    }
+
+    override fun devolver() {
+        if (alquilado) {
+            alquilado = false
+            println("Se ha devuelto la moto $marca $modelo con placa $placa")
+        } else {
+            println("La moto no estaba alquilada")
+        }
+    }
+}
+
+fun main() {
+    val coche1 = Coche("Toyota", "Corolla", "ASS212")//se colocan modelos
+    val moto1 = Moto("Honda", "Civic", "CUC213")
+
+    coche1.alquilar()
+    moto1.alquilar()
+
+    coche1.alquilar()  // Intentar alquilar el mismo coche nuevamente
+    moto1.devolver()
+
+    coche1.devolver()
+}
