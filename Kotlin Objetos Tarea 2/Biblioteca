@@ -1,0 +1,101 @@
+//Joaquin Torres Flores
+// Clase Material
+abstract class Material(
+    val titulo: String,
+    val autor: String,
+    val añoPublicacion: Int
+) {
+    abstract fun mostrarDetalles()
+}
+
+// Subclase Libro
+class Libro(
+    titulo: String,
+    autor: String,
+    anioPublicacion: Int,
+    val genero: String,
+    val numeroPaginas: Int
+) : Material(titulo, autor, anioPublicacion) {
+    override fun mostrarDetalles() {
+        println("Título: $titulo, Autor: $autor, Año de Publicación: $añoPublicacion, Género: $genero, Número de Páginas: $numeroPaginas")
+    }
+}
+
+// Subclase Revista
+class Revista(
+    titulo: String,
+    autor: String,
+    anioPublicacion: Int,
+    val issn: String,
+    val volumen: Int,
+    val numero: Int,
+    val editorial: String
+) : Material(titulo, autor, anioPublicacion) {
+    override fun mostrarDetalles() {
+        println("Título: $titulo, Autor: $autor, Año de Publicación: $añoPublicacion, ISSN: $issn, Volumen: $volumen, Número: $numero, Editorial: $editorial")
+    }
+}
+
+// Clase Usuario
+class Usuario(
+    val nombre: String,
+    val apellido: String,
+    val edad: Int
+) {
+    fun reservarMaterial(material: Material) {
+        println("El usuario $nombre $apellido ha reservado el material ${material.titulo}")
+    }
+
+    fun devolverMaterial(material: Material) {
+        println("El usuario $nombre $apellido ha devuelto el material ${material.titulo}")
+    }
+}
+
+// Clase Biblioteca
+class Biblioteca {
+    private val materialesDisponibles = mutableListOf<Material>()
+    private val usuariosRegistrados = mutableListOf<Usuario>()
+
+    fun agregarMaterial(material: Material) {
+        materialesDisponibles.add(material)
+    }
+
+    fun registrarUsuario(usuario: Usuario) {
+        usuariosRegistrados.add(usuario)
+    }
+
+    fun prestarMaterial(material: Material, usuario: Usuario) {
+        if (materialesDisponibles.contains(material) && usuariosRegistrados.contains(usuario)) {
+            println("Se ha prestado el libro ${material.titulo} al usuario ${usuario.nombre} ${usuario.apellido}")
+            materialesDisponibles.remove(material)
+        } else {
+            println("No se puede prestar el material")
+        }
+    }
+
+    fun devolverMaterial(material: Material, usuario: Usuario) {
+        if (usuariosRegistrados.contains(usuario)) {
+            println("El usuario ${usuario.nombre} ${usuario.apellido} ha devuelto el material ${material.titulo}")
+            materialesDisponibles.add(material)
+        } else {
+            println("No se puede devolver el material")
+        }
+    }
+}
+fun main(){
+    // Pruebas para Sistema de Gestión de Biblioteca
+    val libro = Libro("El libro troll", "Homero", 2016, "Comedia", 99999)// se agregan los datos del libro 
+    libro.mostrarDetalles()
+
+    val revista = Revista("MTV", "Bob Rogan", 2024, "1421-6969", 758, 1, "Currucu")
+    revista.mostrarDetalles()
+
+    val usuario = Usuario("Big", "Billy", 50)
+    val biblioteca = Biblioteca()
+    biblioteca.agregarMaterial(libro)
+    biblioteca.agregarMaterial(revista)
+    biblioteca.registrarUsuario(usuario)
+    biblioteca.prestarMaterial(libro, usuario)
+    biblioteca.devolverMaterial(libro, usuario)
+
+}
